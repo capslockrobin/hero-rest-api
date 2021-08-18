@@ -1,0 +1,33 @@
+GET http://localhost:3000/
+
+###
+
+GET http://localhost:3000/api/heros/4
+
+###
+GET http://localhost:3000/api/heros
+
+###
+
+POST http://localhost:3000/api/heros
+Content-Type: application/json
+
+{
+    
+    "name": "Spider-Man",
+    "power": 10
+}
+
+###
+
+DELETE http://localhost:3000/api/heros/2
+
+###
+
+PUT http://localhost:3000/api/heros/3
+Content-Type: application/json
+
+{
+    "name": "batman",
+    "power": 20
+}
