@@ -35,8 +35,7 @@ const getOneHero = (req, res, next) => {
  * @param {Response} res 
  * @param {NextFunction} next 
  */
-const addHero = (req, res) => {
-  if (req.body.name && req.body.power && req.body.speed) {
+const addHero = (req, res) => { 
     let heros = getAllHerosFromDb();
 
     let hero = req.body;
@@ -45,9 +44,6 @@ const addHero = (req, res) => {
 
     writeHerosToDb(heros);
     return res.status(201).json(req.body);
-  }
-
-  res.status(400).json("missing parts of correct body");
 };
 
 /**

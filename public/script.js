@@ -1,28 +1,55 @@
 window.addEventListener("load", main);
 
 function main() {
-  const buttom = document.getElementById("hero-button");
-  buttom.addEventListener("click", fetchHeros);
+  fetchHeros();
 
   const addForm = document.getElementById("add-hero");
   addForm.addEventListener("submit", addHero);
 }
 
-async function fetchHeros(event) {
+async function fetchHeros() {
   console.log("hämtar heros");
   const response = await fetch("/api/heros");
-  const result = await response.json();
+  const heros = await response.json();
   
-  console.log(result);
+  console.log(heros);
 
 
-  
-  for (var i = 0; i < result.length; i++) {
-    var hero = result[i];
+  let oldDayTodos = document.getElementById("hero-list");
+  oldDayTodos.textContent = "";
+
+  for (var i = 0; i < heros.length; i++) {
+    var hero = heros[i];
 
     let textOfHero = document.createElement("ul");
-    textOfHero.innerText = "Hero: " + hero.name + "power level: " + hero.power + "speed level: " + hero.speed;
+
+    textOfHero.innerText =
+      "Hero: " +
+      hero.name +
+      "power level: " +
+      hero.power +
+      "speed level: " +
+      hero.speed;
+
+    //button.edit
+    let editButton = document.createElement("button");
+    editButton.setAttribute("id", heros[i].id);
+    editButton.addEventListener("click", edditHero, true);
+
+    //button.delete
+    let deleteButton = document.createElement("button");
+    deleteButton.setAttribute("id", heros[i].id);
+    deleteButton.addEventListener("click", deleteHero, true);
+
+       editButton.innerText = "edit";
+       editButton.className = "edit";
+       deleteButton.innerText = "delete";
+       deleteButton.className = "delete";
+
+     textOfHero.appendChild(editButton);
+     textOfHero.appendChild(deleteButton);
     document.getElementById("hero-list").appendChild(textOfHero);
+
     // event.target.innerHTML = "Heros : " + hero.name;
     console.log(hero.id);
     console.log(hero.name);
@@ -31,6 +58,14 @@ async function fetchHeros(event) {
 
   // document.getElementById("demo").innerHTML =
   //   person.name + ", " + person.age + ", " + person.city;
+}
+
+function edditHero(event){
+
+}
+
+function deleteHero(event){
+
 }
 
 
@@ -52,6 +87,7 @@ async function addHero(event){
       });
      
       const result = await response.json();
+      fetchHeros();
       console.log("result from post:" + result.JSON);
    
 }

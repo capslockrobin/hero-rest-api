@@ -15,8 +15,8 @@ Content-Type: application/json
 {
     
     "name": "Spider-Man",
-    "power": 10,
-    "speed": 20
+    "power": 0,
+    "speed": 5
 }
 
 ###
