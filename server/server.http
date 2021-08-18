@@ -15,19 +15,21 @@ Content-Type: application/json
 {
     
     "name": "Spider-Man",
-    "power": 10
+    "power": 10,
+    "speed": 20
 }
 
 ###
 
-DELETE http://localhost:3000/api/heros/2
+DELETE http://localhost:3000/api/heros/6
 
 ###
 
-PUT http://localhost:3000/api/heros/3
+PUT http://localhost:3000/api/heros/1
 Content-Type: application/json
 
 {
     "name": "batman",
-    "power": 20
+    "power": 20,
+    "speed": 33
 }
