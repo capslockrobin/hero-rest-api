@@ -1,5 +1,5 @@
 const { Request, Response, NextFunction } = require('express');
-const fs = require("fs");
+const {getAllHerosFromDb,writeHerosToDb,} = require("./hero.jsonHandler");
 
 /**
  * Responds with all heros from db
@@ -19,8 +19,7 @@ function getHeros(req, res) {
  * @param {NextFunction} next 
  */
 const getOneHero = (req, res, next) => {
-  let rawdata = fs.readFileSync("server/heroDb.json");
-  let heros = JSON.parse(rawdata);
+  let heros = getAllHerosFromDb();
   let hero = heros.find((h) => h.id == req.params.id);
 
   if (hero) {
@@ -41,7 +40,9 @@ const addHero = (req, res) => {
     let hero = req.body;
     hero.id = heros.length;
     heros.push(hero);
-
+    console.log(heros)
+    console.log(hero)
+    console.log(heros)
     writeHerosToDb(heros);
     return res.status(201).json(req.body);
 };
@@ -95,16 +96,6 @@ const updateHero = (req, res) => {
   res.status(400).json("missing parts of correct body");
 };
 
-function getAllHerosFromDb() {
-  let rawdata = fs.readFileSync("server/heroDb.json");
-  let heros = JSON.parse(rawdata);
-  return heros;
-}
-
-function writeHerosToDb(heros) {
-  let data = JSON.stringify(heros);
-  fs.writeFileSync("server/heroDb.json", data);
-}
 
 module.exports = {
   getHeros,

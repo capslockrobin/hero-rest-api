@@ -1,4 +1,7 @@
 const { body, validationResult } = require("express-validator");
+const { getOneHero } = require("./hero.controllers");
+// const { getAllHerosFromDb, writeHerosToDb } = require("./hero.jsonHandler");
+// const { param } = require("./hero.router");
 
 function checkValidation(req, res, next) {
   const errors = validationResult(req);
@@ -16,7 +19,49 @@ const saveValidation = [
   checkValidation,
 ];
 
+const updateValitation = [
+  body("name").notEmpty().isLength({ min: 3 }),
+  body("power").isFloat({ min: 1, max: 5 }),
+  body("speed").isFloat({ min: 1, max: 5 }),
+  checkValidation,
+];
+
+// const deleteValitation = [
+//   param("id")
+//   checkValidation,
+// ];
+
+// doIdExist(){
+
+// }
+
+// const foo = param("id", req, res, next, id => {
+//     let hero = getOneHero();
+//      User.find(id, function(err, user){
+//      if (err) {
+//        next(err);
+//      } else if (user) {
+//        req.user = user;
+//        next();
+//      } else {
+//        next(new Error('failed to load user'));
+//      }
+//    });
+// });
+// app.param('user_id', function(req, res, next, id){
+//    User.find(id, function(err, user){
+//      if (err) {
+//        next(err);
+//      } else if (user) {
+//        req.user = user;
+//        next();
+//      } else {
+//        next(new Error('failed to load user'));
+//      }
+//    });
+//  });
+
 module.exports = {
   saveValidation,
-  // export validations for other endpoints if needed
+  updateValitation,
 };

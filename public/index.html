@@ -16,9 +16,19 @@
       <label for="name">Hero name:</label><br />
       <input type="text" id="name" name="name" required/><br />
       <label for="power">power level:</label><br />
-      <input type="number" id="power" name="power" required /><br />
+      <input type="number" id="power" name="power" required min="1" max="5" /><br />
       <label for="speed">speed level:</label><br />
-      <input type="number" id="speed" name="speed" required /><br /><br />
+      <input type="number" id="speed" name="speed" required min="1" max="5" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <form class="display-eddit-form" name="add" id="eddit-hero">
+      <label for="name">Hero name:</label><br />
+      <input type="text" id="eddit-name" name="name" required/><br />
+      <label for="power">power level:</label><br />
+      <input type="number" id="eddit-power" name="power" required min="1" max="5" /><br />
+      <label for="speed">speed level:</label><br />
+      <input type="number" id="eddit-speed" name="speed" required min="1" max="5" /><br /><br />
       <input type="submit" value="Submit" />
     </form>
 
