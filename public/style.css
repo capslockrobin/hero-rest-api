@@ -12,6 +12,10 @@ header {
   justify-content: space-evenly;
 }
 
+label{
+    color: white;
+}
+
 p {
   margin-top: 1rem;
   margin-bottom: 0;

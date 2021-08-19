@@ -2,7 +2,7 @@ GET http://localhost:3000/
 
 ###
 
-GET http://localhost:3000/api/heros/4
+GET http://localhost:3000/api/heros/581ac9aa-4839-4d82-994c-445e4bfdff8a
 
 ###
 GET http://localhost:3000/api/heros
@@ -21,15 +21,15 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/heros/2
+DELETE http://localhost:3000/api/heros/581ac9aa-4839-4d82-994c-445e4bfdff8a
 
 ###
 
-PUT http://localhost:3000/api/heros/1
+PUT http://localhost:3000/api/heros/a26ab13a-266e-425f-b3c3-35bd32fccdca
 Content-Type: application/json
 
 {
-    "name": "batman",
-    "power": 3,
+    "name": "he-man",
+    "power": 5,
     "speed": 1
 }
