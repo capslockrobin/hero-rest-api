@@ -19,7 +19,6 @@ let edditId;
 
 //START Api calls:
 async function fetchHeros() {
-  console.log("hämtar heros");
   const response = await fetch("/api/heros");
   const heros = await response.json();
   herosNow = heros;
@@ -175,7 +174,6 @@ function toggleEdditForm(id) {
 
   herosNow.forEach((element) => {
     if (element.id == id) {
-      console.log(element.name);
       document.getElementById("eddit-name").value = element.name;
       document.getElementById("eddit-power").value = element.power;
       document.getElementById("eddit-speed").value = element.speed;

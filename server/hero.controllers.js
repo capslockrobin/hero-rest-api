@@ -54,9 +54,7 @@ const deleteHero = (req, res) => {
 
   let heros = getAllHerosFromDb();
   for (var i = 0; i < heros.length; i++) {
-      console.log("skit")
     if (heros[i].id == id) {
-        console.log("bajs")
       heros.splice(i, 1);
       writeHerosToDb(heros);
       return res.status(200).json("Deleted succsesfully id: " + req.params.id);
@@ -73,7 +71,6 @@ const deleteHero = (req, res) => {
  * @param {NextFunction} next 
  */
 const updateHero = (req, res) => {
-  if (req.body.name && req.body.power && req.body.speed) {
     const { id } = req.params;
 
     let heros = getAllHerosFromDb();
@@ -82,8 +79,6 @@ const updateHero = (req, res) => {
     writeHerosToDb(heros);
 
     return res.status(200).json(heros[objIndex]);
-  }
-  res.status(400).json("missing parts of correct body");
 };
 
 module.exports = {
