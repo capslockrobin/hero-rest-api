@@ -60,7 +60,9 @@ const deleteHero = (req, res) => {
 
   let heros = getAllHerosFromDb();
   for (var i = 0; i < heros.length; i++) {
-    if (heros[i].id && heros[i].id == id) {
+      console.log("skit")
+    if (heros[i].id == id) {
+        console.log("bajs")
       heros.splice(i, 1);
       writeHerosToDb(heros);
       return res.status(200).json("Deleted succsesfully id: " + req.params.id);
