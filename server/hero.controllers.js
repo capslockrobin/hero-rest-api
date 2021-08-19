@@ -1,5 +1,7 @@
 const { Request, Response, NextFunction } = require('express');
 const {getAllHerosFromDb,writeHerosToDb,} = require("./hero.jsonHandler");
+const { v4: uuidv4 } = require("uuid");
+
 
 /**
  * Responds with all heros from db
@@ -36,9 +38,9 @@ const getOneHero = (req, res, next) => {
  */
 const addHero = (req, res) => { 
     let heros = getAllHerosFromDb();
-
-    let hero = req.body;
-    hero.id = heros.length;
+    let hero = {...req.body, id: uuidv4()}
+    // let hero = req.body;
+    // hero.id = heros.length;
     heros.push(hero);
     console.log(heros)
     console.log(hero)

@@ -3,6 +3,9 @@ window.addEventListener("load", main);
 function main() {
   fetchHeros();
 
+  const addButtomToggle = document.getElementById("add-button");
+  addButtomToggle.addEventListener("click", toggleAdd);
+
   const addForm = document.getElementById("add-hero");
   addForm.addEventListener("submit", addHero);
 
@@ -34,30 +37,49 @@ function printHeros(heros) {
     textOfHero.innerText =
       "Hero: " +
       hero.name +
-      "power level: " +
+      " power level: " +
       hero.power +
-      "speed level: " +
+      " speed level: " +
       hero.speed;
+
+      // textOfHero.setAttribute("style", " width: 100%");
+      textOfHero.classList.add('text-of-hero');
 
     //button.edit
     let editButton = document.createElement("button");
     editButton.setAttribute("id", heros[i].id);
     editButton.addEventListener("click", edditHero, true);
 
+    editButton.classList.add("eddit-button");
+    editButton.classList.add("button-design");
     //button.delete
     let deleteButton = document.createElement("button");
     deleteButton.setAttribute("id", heros[i].id);
     deleteButton.addEventListener("click", deleteHero, true);
 
-    editButton.innerText = "edit";
-    editButton.className = "edit";
-    deleteButton.innerText = "delete";
-    deleteButton.className = "delete";
+    deleteButton.classList.add("delete-button");
+    deleteButton.classList.add("button-design");
+
+    editButton.innerText = "Edit";
+    // editButton.className = "edit";
+    deleteButton.innerText = "Delete";
+    // deleteButton.className = "delete";
 
     textOfHero.appendChild(editButton);
     textOfHero.appendChild(deleteButton);
     document.getElementById("hero-list").appendChild(textOfHero);
   }
+}
+
+function toggleAdd(){
+   let frm_element = document.getElementById("add-hero");
+   let vis = frm_element.style;
+   if (vis.display == "" || vis.display == "none") {
+     vis.display = "block";
+     vis.padding ="1rem";
+   } else {
+     vis.display = "none";
+   }
 }
 
 function edditHero(event) {
@@ -80,6 +102,7 @@ function toggleEdditForm(id) {
   let vis = frm_element.style;
   if (vis.display == "" || vis.display == "none") {
     vis.display = "block";
+    vis.padding = "1rem";
   } else {
     vis.display = "none";
   }
@@ -110,6 +133,7 @@ async function addHero(event) {
 
   const result = await response.json();
   fetchHeros();
+  toggleAdd();
   console.log("result from post:" + result.JSON);
 }
 

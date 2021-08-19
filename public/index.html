@@ -4,33 +4,57 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Heor</title>
+   
     <link rel="stylesheet" href="./style.css" />
     <script src="script.js"></script>
+
   </head>
   <body>
 
-    <ul id="hero-list"></ul>
+    <header>
+      <div>
+      <button class="button-design add-button" id="add-button">Add Hero</button>
 
-    <form name="add" id="add-hero">
-      <label for="name">Hero name:</label><br />
-      <input type="text" id="name" name="name" required/><br />
-      <label for="power">power level:</label><br />
-      <input type="number" id="power" name="power" required min="1" max="5" /><br />
-      <label for="speed">speed level:</label><br />
-      <input type="number" id="speed" name="speed" required min="1" max="5" /><br /><br />
-      <input type="submit" value="Submit" />
-    </form>
+      </div>
+      <div class="hero-text">
+      <p>Hero of the world</p>
 
-    <form class="display-eddit-form" name="add" id="eddit-hero">
-      <label for="name">Hero name:</label><br />
-      <input type="text" id="eddit-name" name="name" required/><br />
-      <label for="power">power level:</label><br />
-      <input type="number" id="eddit-power" name="power" required min="1" max="5" /><br />
-      <label for="speed">speed level:</label><br />
-      <input type="number" id="eddit-speed" name="speed" required min="1" max="5" /><br /><br />
-      <input type="submit" value="Submit" />
-    </form>
+      </div>
+
+    </header>
+
+    <div class="container">
+      <div class="form-card">
+           <form class="form display-add-form" name="add" id="add-hero">
+            <label for="name">Hero name:</label><br />
+            <input class="input-field" type="text" id="name" name="name" required/><br />
+            <label for="power">power level:</label><br />
+            <input class="input-field" type="number" id="power" name="power" required min="1" max="5" /><br />
+            <label for="speed">speed level:</label><br />
+            <input class="input-field" type="number" id="speed" name="speed" required min="1" max="5" /><br /><br />
+            <input class="button-design add-button" type="submit" value="Add" />
+          </form>
+      </div>
+      <div class="form-card">
+         <form class="form display-eddit-form" name="add" id="eddit-hero">
+          <label for="name">Hero name:</label><br />
+          <input class="input-field" type="text" id="eddit-name" name="name" required/><br />
+          <label for="power">power level:</label><br />
+          <input class="input-field" type="number" id="eddit-power" name="power" required min="1" max="5" /><br />
+          <label for="speed">speed level:</label><br />
+          <input class="input-field" type="number" id="eddit-speed" name="speed" required min="1" max="5" /><br /><br />
+          <input type="submit" class="button-design eddit-button" value="Eddit" />
+        </form>
+      </div>
+    </div>
+    
+
+    <ul class="hero-list-style" style="background-color: brown;" id="hero-list"></ul>
+
+
+
+   
 
   </body>
 </html>

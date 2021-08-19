@@ -1,3 +1,109 @@
+body{
+    background-color: darkgray;
+    margin: 0px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+header{
+    background-color: darkred;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+p{
+     margin-top: 1rem;
+     margin-bottom: 0;
+}
+
+.hero-text{
+    font-size: large;
+   
+}
+
 .display-eddit-form {
     display: none;
 }
+
+.display-add-form{
+    display: none;
+}
+
+.form-card{
+    background-color: darkorchid;
+    flex: 1;
+    /* padding: 1rem; */
+    /* padding: 0.5rem 0.5rem;
+    padding-right: 10rem; */
+    /* margin-top: 10rem; */
+}
+
+.input-field{
+    width: 100%;
+}
+
+.container{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    background-color: gold;
+}
+
+.hero-list-style{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items:flex-end; */
+}
+
+.text-of-hero{
+    padding: 0.5rem;
+    width: 100%;
+    background-color: gold;
+    justify-content: center;
+    align-items: center;
+}
+
+ul{
+   padding-inline-start: 0;
+}
+
+.eddit-button{
+    background-color: rgb(1, 95, 4); /* Green */
+  
+}
+
+
+.eddit-button:hover {background-color:#4CAF50;}
+
+.delete-button{
+    background-color: rgb(179, 1, 1)
+
+}
+
+.delete-button:hover {background-color:rgb(255, 0, 0)}
+
+.button-design{
+    border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 15%;
+}
+
+.add-button{
+    background-color: rgb(0, 0, 255);
+}
+
+.add-button:hover {background-color:rgb(52, 34, 251)}
+
+/* .center{
+    align-items: center;
+    justify-content: center;
+} */
