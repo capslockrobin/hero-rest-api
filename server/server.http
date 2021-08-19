@@ -2,7 +2,7 @@ GET http://localhost:3000/
 
 ###
 
-GET http://localhost:3000/api/heros/581ac9aa-4839-4d82-994c-445e4bfdff8a
+GET http://localhost:3000/api/heros/8e76a870-8c1e-4bde-86e4-c927f89e1caa
 
 ###
 GET http://localhost:3000/api/heros
@@ -21,7 +21,7 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/heros/581ac9aa-4839-4d82-994c-445e4bfdff8a
+DELETE http://localhost:3000/api/heros/36702312-16a9-419c-baf7-a85169ecbe23
 
 ###
 

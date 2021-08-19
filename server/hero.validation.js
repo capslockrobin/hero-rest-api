@@ -1,4 +1,4 @@
-const { body, validationResult } = require("express-validator");
+const { body, validationResult, check } = require("express-validator");
 const { getOneHero } = require("./hero.controllers");
 // const { getAllHerosFromDb, writeHerosToDb } = require("./hero.jsonHandler");
 // const { param } = require("./hero.router");
@@ -26,14 +26,20 @@ const updateValitation = [
   checkValidation,
 ];
 
-// const deleteValitation = [
-//   param("id")
-//   checkValidation,
-// ];
+const deleteValitation = [
+  doIdExist,
+  checkValidation,
+];
 
-// doIdExist(){
-
-// }
+function doIdExist(){
+    check("id").custom((value) => {
+      return hero.getOneHero(value).then(function (hero) {
+        if (!hero) {
+          throw new Error("this hero dose not exixt to be deleted");
+        }
+      });
+    });
+}
 
 // const foo = param("id", req, res, next, id => {
 //     let hero = getOneHero();
@@ -64,4 +70,5 @@ const updateValitation = [
 module.exports = {
   saveValidation,
   updateValitation,
+  deleteValitation,
 };

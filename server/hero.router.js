@@ -7,7 +7,11 @@ const {
   deleteHero,
 } = require("./hero.controllers");
 
-const { saveValidation, updateValitation } = require("./hero.validation");
+const {
+  saveValidation,
+  updateValitation,
+  deleteValitation,
+} = require("./hero.validation");
 
 const router = express.Router();
 
