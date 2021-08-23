@@ -2,7 +2,7 @@ GET http://localhost:3000/
 
 ###
 
-GET http://localhost:3000/api/heros/8e76a870-8c1e-4bde-86e4-c927f89e1caa
+GET http://localhost:3000/api/heros/a26ab13a-266e-425f-b3c3-35bd32fccdca
 
 ###
 GET http://localhost:3000/api/heros
@@ -15,7 +15,7 @@ Content-Type: application/json
 {
     
     "name": "Spider-Man",
-    "power": 2,
+    "power": 5,
     "speed": 5
 }
 
