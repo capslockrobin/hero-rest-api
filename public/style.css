@@ -37,6 +37,8 @@ p {
 
 .form-card {
   flex: 1;
+  border: black;
+  border-style: solid;
 }
 
 .input-field {
