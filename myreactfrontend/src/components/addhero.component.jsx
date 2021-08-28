@@ -74,7 +74,6 @@ export default class AddHero extends Component {
           </div>
         ) : (
           <form onSubmit={this.saveHero}>
-
             <div className="form-group">
               <label htmlFor="name">name</label>
               <input
@@ -82,6 +81,7 @@ export default class AddHero extends Component {
                 className="form-control"
                 id="name"
                 required
+                minLength="3"
                 value={this.state.name}
                 onChange={this.handleChange}
                 name="name"

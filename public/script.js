@@ -19,7 +19,7 @@ let edditId;
 
 //START Api calls:
 async function fetchHeros() {
-  const response = await fetch("/api/heros");
+  const response = await fetch("/api/heroes");
   const heros = await response.json();
   herosNow = heros;
 
@@ -29,7 +29,7 @@ async function fetchHeros() {
 async function deleteHero(event) {
   let id = event.target.attributes.id.textContent;
 
-  await fetch("http://localhost:3000/api/heros/" + id, {
+  await fetch("http://localhost:3000/api/heroes/" + id, {
     method: "DELETE",
   });
   fetchHeros();
@@ -37,7 +37,7 @@ async function deleteHero(event) {
 
 async function detailOfHero(event) {
   let id = event.target.attributes.id.textContent;
-  const response = await fetch("/api/heros/" + id);
+  const response = await fetch("/api/heroes/" + id);
   const hero = await response.json();
 
   printOneHeros(hero);
@@ -47,7 +47,7 @@ async function addHero(event) {
   event.preventDefault();
   const thisForm = document.getElementById("add-hero");
   const formData = new FormData(thisForm).entries();
-  const response = await fetch("http://localhost:3000/api/heros", {
+  const response = await fetch("http://localhost:3000/api/heroes", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(Object.fromEntries(formData)),
@@ -62,7 +62,7 @@ async function sendEdditHeroFrom(event) {
   event.preventDefault();
   const thisForm = document.getElementById("eddit-hero");
   const formData = new FormData(thisForm).entries();
-  const response = await fetch("http://localhost:3000/api/heros/" + edditId, {
+  const response = await fetch("http://localhost:3000/api/heroes/" + edditId, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(Object.fromEntries(formData)),

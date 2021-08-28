@@ -10,15 +10,14 @@ const {
 const {
   saveValidation,
   updateValitation,
-  deleteValitation,
 } = require("./hero.validation");
 
 const router = express.Router();
 
-router.get("/api/heros", getHeros)
-router.get("/api/heros/:id", getOneHero);
-router.post("/api/heros", saveValidation, addHero);
-router.delete("/api/heros/:id", deleteHero);
-router.put("/api/heros/:id",updateValitation, updateHero);
+router.get("/api/heroes", getHeros)
+router.get("/api/heroes/:id", getOneHero);
+router.post("/api/heroes", saveValidation, addHero);
+router.delete("/api/heroes/:id", deleteHero);
+router.put("/api/heroes/:id",updateValitation, updateHero);
 
 module.exports = router;

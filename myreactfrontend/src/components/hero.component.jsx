@@ -70,6 +70,7 @@ export default class Hero extends Component {
   deleteHero() {    
     HeroesDataService.delete(this.state.currentHero.id)
       .then(() => {
+        // componentWillUnmount(document.getElementById("root"));
         this.props.history.push('/heroes')
       })
       .catch(e => {
@@ -92,6 +93,7 @@ export default class Hero extends Component {
                   className="form-control"
                   id="name"
                   name="name"
+                  minLength="3"
                   required
                   value={currentHero.name}
                   onChange={this.handleChange}
@@ -112,7 +114,7 @@ export default class Hero extends Component {
                 />
               </div>
 
-               <div className="form-group">
+              <div className="form-group">
                 <label htmlFor="speed">speed</label>
                 <input
                   type="number"

@@ -2,14 +2,14 @@ GET http://localhost:3000/
 
 ###
 
-GET http://localhost:3000/api/heros/a26ab13a-266e-425f-b3c3-35bd32fccdca
+GET http://localhost:3000/api/heroes/a26ab13a-266e-425f-b3c3-35bd32fccdca
 
 ###
-GET http://localhost:3000/api/heros
+GET http://localhost:3000/api/heroes
 
 ###
 
-POST http://localhost:3000/api/heros
+POST http://localhost:3000/api/heroes
 Content-Type: application/json
 
 {
@@ -21,15 +21,15 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/heros/36702312-16a9-419c-baf7-a85169ecbe23
+DELETE http://localhost:3000/api/heroes/36702312-16a9-419c-baf7-a85169ecbe23
 
 ###
 
-PUT http://localhost:3000/api/heros/a26ab13a-266e-425f-b3c3-35bd32fccdca
+PUT http://localhost:3000/api/heroes/a26ab13a-266e-425f-b3c3-35bd32fccdca
 Content-Type: application/json
 
 {
-    "name": "he-man",
+    "name": "hej",
     "power": 5,
     "speed": 1
 }
