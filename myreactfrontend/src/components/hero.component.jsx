@@ -5,12 +5,10 @@ import HeroesDataService from "../services/hero.service";
 export default class Hero extends Component {
   constructor(props) {
     super(props);
-    this.onChangeName = this.onChangeName.bind(this);
-    this.onChangePower = this.onChangePower.bind(this);
-    this.onChangeSpeed = this.onChangeSpeed.bind(this);
     this.getHero = this.getHero.bind(this);
     this.updateHero = this.updateHero.bind(this);
     this.deleteHero = this.deleteHero.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
     this.state = {
       currentHero: {
@@ -28,41 +26,19 @@ export default class Hero extends Component {
     this.getHero(this.props.match.params.id);
   }
 
-  onChangeName(e) {
-    const name = e.target.value;
+  handleChange (evt) {
+    const { name, value } = evt.target;
 
-    this.setState(function(prevState) {
-      return {
-        currentHero: {
-          ...prevState.currentHero,
-          name: name
+    this.setState(function(prevState){
+        return{
+          currentHero: {
+            ...prevState.currentHero,
+            [name]: value
+          }
         }
-      };
     });
   }
-
-  onChangePower(e) {
-    const power = e.target.value;
-    
-    this.setState(prevState => ({
-      currentHero: {
-        ...prevState.currentHero,
-        power: power
-      }
-    }));
-  }
-
-   onChangeSpeed(e) {
-    const speed = e.target.value;
-    
-    this.setState(prevState => ({
-      currentHero: {
-        ...prevState.currentHero,
-        speed: speed
-      }
-    }));
-  }
-
+  
   getHero(id) {
     HeroesDataService.get(id)
       .then(response => {
@@ -75,14 +51,13 @@ export default class Hero extends Component {
       });
   }
 
-
-  updateHero() {
+  updateHero(event) {
+    event.preventDefault();
     HeroesDataService.update(
       this.state.currentHero.id,
       this.state.currentHero
     )
-      .then(response => {
-        console.log(response.data);
+      .then(() => { 
         this.setState({
           message: "The hero was updated successfully!"
         });
@@ -94,8 +69,7 @@ export default class Hero extends Component {
 
   deleteHero() {    
     HeroesDataService.delete(this.state.currentHero.id)
-      .then(response => {
-        console.log(response.data);
+      .then(() => {
         this.props.history.push('/heroes')
       })
       .catch(e => {
@@ -110,15 +84,17 @@ export default class Hero extends Component {
         {currentHero ? (
           <div className="edit-form">
             <h4>Hero</h4>
-            <form>
+            <form onSubmit={this.updateHero}>
               <div className="form-group">
                 <label htmlFor="name">name</label>
                 <input
                   type="text"
                   className="form-control"
                   id="name"
+                  name="name"
+                  required
                   value={currentHero.name}
-                  onChange={this.onChangeName}
+                  onChange={this.handleChange}
                 />
               </div>
               <div className="form-group">
@@ -127,8 +103,9 @@ export default class Hero extends Component {
                   type="number"
                   className="form-control"
                   id="power"
+                  name="power"
                   value={currentHero.power}
-                  onChange={this.onChangePower}
+                  onChange={this.handleChange}
                   required
                   max="5"
                   min="1"
@@ -141,28 +118,28 @@ export default class Hero extends Component {
                   type="number"
                   className="form-control"
                   id="speed"
+                  name="speed"
                   value={currentHero.speed}
-                  onChange={this.onChangeSpeed}
+                  onChange={this.handleChange}
                   required
                   max="5"
                   min="1"
                 />
               </div>
-            </form>
-            <button
-              className="badge badge-danger mr-2"
-              onClick={this.deleteHero}
-            >
-              Delete
-            </button>
+              <button
+                className="delete-button badge badge-danger mr-2"
+                onClick={this.deleteHero}
+              >
+                Delete
+              </button>
 
-            <button
-              type="submit"
-              className="badge badge-success"
-              onClick={this.updateHero}
-            >
-              Update
-            </button>
+              <button
+                type="submit"
+                className="update-button badge badge-success"
+              >
+                Update
+              </button>
+            </form>
             <p>{this.state.message}</p>
           </div>
         ) : (

@@ -4,61 +4,49 @@ import HeroesDataService from "../services/hero.service";
 export default class AddHero extends Component {
   constructor(props) {
     super(props);
-    this.onChangeName = this.onChangeName.bind(this);
-    this.onChangePower = this.onChangePower.bind(this);
-     this.onChangeSpeed = this.onChangeSpeed.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.saveHero = this.saveHero.bind(this);
     this.newHero = this.newHero.bind(this);
 
     this.state = {
       id: null,
       name: "",
-      power: "", 
-      speed: "", 
+      power: 1,
+      speed: 1,
       published: false,
 
-      submitted: false
+      submitted: false,
     };
   }
 
-  onChangeName(e) {
+  handleChange(evt) {
+    const { name, value } = evt.target;
+
     this.setState({
-      name: e.target.value
+      [name]: value,
     });
   }
 
-  onChangePower(e) {
-    this.setState({
-      power: e.target.value
-    });
-  }
-
-  onChangeSpeed(e) {
-    this.setState({
-      speed: e.target.value
-    });
-  }
-
-  saveHero() {
+  saveHero(event) {
+    event.preventDefault();
     var data = {
       name: this.state.name,
       power: this.state.power,
-      speed: this.state.speed
+      speed: this.state.speed,
     };
 
     HeroesDataService.create(data)
-      .then(response => {
+      .then((response) => {
         this.setState({
           id: response.data.id,
           name: response.data.name,
           power: response.data.power,
           speed: response.data.speed,
 
-          submitted: true
+          submitted: true,
         });
-        console.log(response.data);
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
   }
@@ -70,11 +58,11 @@ export default class AddHero extends Component {
       power: "",
       published: false,
 
-      submitted: false
+      submitted: false,
     });
   }
 
- render() {
+  render() {
     return (
       <div className="submit-form">
         {this.state.submitted ? (
@@ -85,7 +73,8 @@ export default class AddHero extends Component {
             </button>
           </div>
         ) : (
-          <div>
+          <form onSubmit={this.saveHero}>
+
             <div className="form-group">
               <label htmlFor="name">name</label>
               <input
@@ -94,11 +83,10 @@ export default class AddHero extends Component {
                 id="name"
                 required
                 value={this.state.name}
-                onChange={this.onChangeName}
+                onChange={this.handleChange}
                 name="name"
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="power">power</label>
               <input
@@ -106,14 +94,13 @@ export default class AddHero extends Component {
                 className="form-control"
                 id="power"
                 value={this.state.power}
-                onChange={this.onChangePower}
+                onChange={this.handleChange}
                 name="power"
                 required
                 max="5"
                 min="1"
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="speed">speed</label>
               <input
@@ -121,18 +108,17 @@ export default class AddHero extends Component {
                 className="form-control"
                 id="power"
                 value={this.state.speed}
-                onChange={this.onChangeSpeed}
+                onChange={this.handleChange}
                 name="speed"
-                 required
-                  max="5"
-                  min="1"
+                required
+                max="5"
+                min="1"
               />
             </div>
-
-            <button onClick={this.saveHero} className="btn btn-success">
+            <button type="submit" className="btn btn-success">
               Submit
             </button>
-          </div>
+          </form>
         )}
       </div>
     );

@@ -53,6 +53,29 @@
   margin: auto;
 }
 
-/* .edit-button{
-  background: brown;
-} */
+.edit-button{
+  background: rgb(165, 142, 42);
+}
+
+.delete-button{
+  background: rgb(255, 0, 0);
+}
+
+.update-button{
+  background: rgb(2, 245, 188);
+}
+
+a {
+    color: inherit;
+    text-decoration: none !important;
+}
+
+a:hover {
+    /* color:#00A0C6;  */
+    text-decoration: none !important; 
+    cursor:pointer;  
+}
+
+.poiner{
+  cursor: pointer;
+}

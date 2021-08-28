@@ -27,7 +27,6 @@ export default class HeroesList extends Component {
         this.setState({
           heroes: response.data
         });
-        console.log(response.data);
       })
       .catch(e => {
         console.log(e);
@@ -56,18 +55,18 @@ export default class HeroesList extends Component {
     return (
       <div className="list row">
         <div className="col-md-6">
-          <h4>heroes List</h4>
+          <h4>Heroes List</h4>
 
           <ul className="list-group">
             {heroes &&
-              heroes.map((hero, index) => (
+              heroes.map((hero) => (
                 <li
                   className={
-                    "list-group-item " +
-                    (index === currentIndex ? "active" : "")
+                    "list-group-item poiner " +
+                    (hero.id === currentIndex ? "active" : "")
                   }
-                  onClick={() => this.setActiveHero(hero, index)}
-                  key={index}
+                  onClick={() => this.setActiveHero(hero, hero.id)}
+                  key={hero.id}
                 >
                   {hero.name}
                 </li>
@@ -98,7 +97,7 @@ export default class HeroesList extends Component {
               </div>
               <Link
                 to={"/heroes/" + currentHero.id}
-                className=".edit-button badge badge-warning"
+                className="edit-button badge badge-warning"
               >
                 Edit
               </Link>
