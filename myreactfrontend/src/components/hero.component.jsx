@@ -16,9 +16,9 @@ export default class Hero extends Component {
         name: "",
         power: 1,
         speed: 1,
-        published: false
+        published: false,
       },
-      message: ""
+      message: "",
     };
   }
 
@@ -26,54 +26,52 @@ export default class Hero extends Component {
     this.getHero(this.props.match.params.id);
   }
 
-  handleChange (evt) {
+  handleChange(evt) {
     const { name, value } = evt.target;
 
-    this.setState(function(prevState){
-        return{
-          currentHero: {
-            ...prevState.currentHero,
-            [name]: value
-          }
-        }
+    this.setState(function (prevState) {
+      return {
+        currentHero: {
+          ...prevState.currentHero,
+          [name]: value,
+        },
+      };
     });
   }
-  
+
   getHero(id) {
     HeroesDataService.get(id)
-      .then(response => {
+      .then((response) => {
         this.setState({
-          currentHero: response.data
+          currentHero: response.data,
         });
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
   }
+
 
   updateHero(event) {
     event.preventDefault();
-    HeroesDataService.update(
-      this.state.currentHero.id,
-      this.state.currentHero
-    )
-      .then(() => { 
+    HeroesDataService.update(this.state.currentHero.id, this.state.currentHero)
+      .then(() => {
         this.setState({
-          message: "The hero was updated successfully!"
+          message: "The hero was updated successfully!",
         });
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
   }
 
-  deleteHero() {    
+  deleteHero() {
     HeroesDataService.delete(this.state.currentHero.id)
       .then(() => {
         // componentWillUnmount(document.getElementById("root"));
-        this.props.history.push('/heroes')
+        this.props.history.push("/heroes");
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
   }
@@ -129,19 +127,18 @@ export default class Hero extends Component {
                 />
               </div>
               <button
-                className="delete-button badge badge-danger mr-2"
-                onClick={this.deleteHero}
-              >
-                Delete
-              </button>
-
-              <button
                 type="submit"
                 className="update-button badge badge-success"
               >
                 Update
               </button>
             </form>
+            <button
+              className="delete-button badge badge-danger mr-2"
+              onClick={this.deleteHero}
+            >
+              Delete
+            </button>
             <p>{this.state.message}</p>
           </div>
         ) : (
